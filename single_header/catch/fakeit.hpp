@@ -8321,8 +8321,9 @@ namespace fakeit {
             return impl.get();
         }
 
-
-
+        virtual std::shared_ptr<C> getFakePtr() {
+            return std::shared_ptr<C>(&impl.get(), [](C*){});
+        }
 
 
 		C &operator()() {
